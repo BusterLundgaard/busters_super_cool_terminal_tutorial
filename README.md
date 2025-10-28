@@ -157,7 +157,7 @@ notes.txt
 # so ~/Downloads/my_downloaded_file.mp4 accesses a file inside it
 # right now, you are not situated inside downloads, but some other folder
 # "." is shorthand for "folder you are in right now", so we can use it to quickly move the file from downloads to where ever we are right now!
-> mv ~/Downloads/my_downloaded_file.mp4 .
+> mv ~/Downloads/my_downloaded_file.mp4 . # <--- notice the little dot!!!
 
 ```
 

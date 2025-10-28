@@ -237,7 +237,21 @@ touch: cannot touch 'my_butt': Permission denied
 ### history
 History lists the last 500 commands you used. Can be great if you've forgotten how to do something you know you did earlier!
 
-Personally, i've changed settings so that history stores not just the last 500 commands, but the last 5 thousand commands. Doing so is a little funky to do, as it requires us to understand "environment variables". To oversimplify, environment variables are little pieces of information you can read and/or write to, that different programs may react to in various ways. Its essentially one mechanism programs use to share information with each other, and allow the user to set permanent settings.
+```BASH
+> history
+5978  nvim init.lua 
+5979  z essay
+5980  cd presentation/
+5981  z essay
+5982  cd presentation
+5983  tree
+5984  mv images/2025-10-28-095142_hyprshot.png images/ontology.png
+5985  systemctl suspend
+|
+... a whole bunch more
+```
+
+Personally, i've changed settings so that history stores not just the last 500 commands, but the last 20 thousand commands. Doing so is a little funky to do, as it requires us to understand "environment variables". To oversimplify, environment variables are little pieces of information you can read and/or write to, that different programs may react to in various ways. Its essentially one mechanism programs use to share information with each other, and allow the user to set permanent settings.
 
 The amount of commands in your history is controlled with thie `HISTSIZE` variable. You can read this with `echo $HISTSIZE`. You can change it to, for example, 1000, by executing `HISTSIZE=1000` inside your terminal. The change will not be permanent, however! Open a new terminal, and `HISTSIZE` will once again be 500...
 
@@ -248,7 +262,7 @@ HISTSIZE=20000
 Then any time you open a terminal, the first thing it will do is to set the history size to 20000, achieving exactly the effect we want!
 
 ### man
-To see the manual page for a specific command, use `man`. For example, to view the manual page for nano, i can write `man nano`. This will bring up an interactive reader (in the terminal of course) with information about nano.
+To see the manual page for a specific command, use `man`. For example, to view the manual page for `nano`, i can write `man nano`. This will bring up an interactive reader (in the terminal of course) with information about `nano`.
 
 ### tldr
 Manual pages can be pretty heavy and dense. They're great for looking up pieces of information, but not so great for understanding how to use a program in the first place. `tldr` is much better at this, as it gives you some concrete examples of things you can do with the program. 
@@ -297,20 +311,20 @@ my_other_cool_folder
 so TAB completes _if_ there is only one option left. TAB-TAB shows you all options it has left for potential autocompletion.
 
 ## Copy pasting:
-Copy pasting text into and from the terminal doesn't simply work with CTRL-C, CTRL-P as one may think! You actually need to use CTRL-SHIFT-C, CTRL-SHIFT-P. As you can see below, the regular CTRL-C without shift is used for something else ...
+Copy pasting text into and from the terminal doesn't simply work with CTRL-C, CTRL-P as one may think! You actually need to use CTRL-SHIFT-C, CTRL-SHIFT-V. As you can see below, the regular CTRL-C without shift is used for something else ...
 
 ## CTRL-C
 Use this to _cancel_ a command you started running.
 Suppose you ran a command, say, `cp` to copy a massive directory to some location, say:
 `cp -r my_massive_directory /home/buster/copy_of_my_massive_directory`
-This command might take some time to run. As typical of many of these slightly unintuitive old unix commands, "no feedback is good feedback!", so `cp` gives you no feedback as it copies this large directory that might take minutes. Digressions aside, supose we regret this, and want to stop this command from copying any more. We can do this simply by pressing `CTRL-C` on our keyboards (`COMMAND-C`) for Mac i think.
+This command might take some time to run. As typical of many of these slightly unintuitive old unix commands, "no feedback is good feedback!", so `cp` gives you no feedback as it copies this large directory that might take minutes. Digressions aside, supose we regret this, and want to stop this command from copying any more. We can do this simply by pressing `CTRL-C` on our keyboards (`COMMAND-C` for Mac i think).
 
 ## CTRL-Z
-This is quite similar to 'CTRL-C', but instead of cancelling a program, it simply halts it/stops it. You can start the running process again by using `fg`, which stands for "foreground" - essentially, you've stopped it and brought it to the background, now you bring it back to the _f_ore_g_round again.
+This is quite similar to 'CTRL-C', but instead of cancelling a program, it simply halts it/stops it. You can start the running process again by using `fg`, which stands for "foreground" - essentially, you've stopped it and brought it to the background, now you bring it back to the **f**ore**g**round again.
 
 # Special symbols in the terminal:
 ## |: pipes
-Pipes are how you make one program communicate to another. We use them *alot* in Linux. The analogy here is that as you run one program, it tends to spit out lines of output. You can "connect" this program to another with a "pipe", so that each output line flows into a program. So pipes allow us to chain programs together *one line at a time*. This is why a lot of files and programs in Linux are on so many seperate lines!
+Pipes are how you make one program communicate to another. The analogy here is that as you run one program, it tends to spit out lines of output. You can "connect" this program to another with a "pipe", so that each output line flows into another program. So pipes allow us to chain programs together *one line at a time*. This is why a lot of files and programs in Linux are on so many seperate lines!
 
 ```BASH
 # print out the contents of a file, then pipe it to wc to see the amount of lines, words and charachters
@@ -318,8 +332,22 @@ Pipes are how you make one program communicate to another. We use them *alot* in
 10 32 230
 # this file in particular seems to have 10 lines, 32 words, 230 charachters
 
-# (think of another good example here)
+# history prints out *many* lines, so we'd like to be able to start from the top and read them in some slightly nicer fashion
+# This is exactly what the program "less" can do. "less" just opens a kind of pager/reader for whatever it gets sent into it
+> history | less
+
+# view the first three files in a directory:
+> ls | head -n 3
+# here "head" displays the first "n" lines it recieves
+# in our case, we set it to display three lines
+# can you guess what the command to see the *last* lines is called :) ?
+
+# view the files, but sorted by alphabet:
+> ls | sort 
+# sort sorts the lines it recieves!
 ```
+
+
 
 ## >: writing to files
 Suppose i want to combine `my_file.txt` with `my_second_file.txt` into a new file `my_third_file.txt`. I could do this as:

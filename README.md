@@ -35,7 +35,7 @@ recipe.txt
 my_cool_file.txt
 ```
 
-==== Important options:
+#### Important options:
 - `ls -a`: List also hidden files! (files that start with ".")
 - `ls --all`: List extra information about files!
 - `ls --l --human-readable`: List size information about files

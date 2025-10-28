@@ -125,9 +125,10 @@ my_other_cool_file.md
 ### mkdir: create folders
 `mkdir` **m**a**k**es a **dir**ectory
 ```BASH
+# suppose our current working directory has a folder "work" and a file "notes.txt"
 > ls
-work
-notes.txt
+work 
+notes.txt 
 
 > mkdir stuff
 > ls
@@ -148,8 +149,16 @@ notes.txt
 # rename notes.txt to my_notes.md:
 > mv work/notes.txt work/my_notes.md
 # rename the folder to boring_stuff:
-> cd ..
 > mv work boring_stuff
+
+# move a file from downloads into the current folder:
+# this one is a little technical:
+# "~", a tilde, refers to your home directory
+# so ~/Downloads/my_downloaded_file.mp4 accesses a file inside it
+# right now, you are not situated inside downloads, but some other folder
+# "." is shorthand for "folder you are in right now", so we can use it to quickly move the file from downloads to where ever we are right now!
+> mv ~/Downloads/my_downloaded_file.mp4 .
+
 ```
 
 ### cp

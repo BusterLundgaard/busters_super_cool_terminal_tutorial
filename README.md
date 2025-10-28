@@ -177,7 +177,9 @@ stuff.txt
 work
 stuff.txt
 
-# to remove folders, we must add the -r flag. This stands for "recurse". Its a comp-sci / mathematics term meaning "keep doing the same thing again and again". In this case, that same thing is "delete everything in the folder", which we do again and again for all the folders of a folder, and so on.
+# to remove folders, we must add the -r flag. This stands for "recurse". 
+# Its a comp-sci / mathematics term meaning "keep doing the same thing again and again".
+# In this case, that same thing is "delete everything in the folder", which we do again and again for all the folders of a folder, and so on.
 > rm -r notes.txt
 > ls
 > stuff.txt
@@ -209,14 +211,14 @@ flatpak install sudoku
 ### nano:
 `nano` is a text editor ... in the terminal. So you can edit files from directly inside the terminal!
 
-The controls inside `nano` are mostly intuitive, but saving and exiting can be a bit confusing at first. You save a file with CTRL-W, as in "Write". You exit with CTRL-X, as in "eXit". 
+The controls inside `nano` are mostly intuitive, but saving and exiting can be a bit confusing at first. You save a file with CTRL-W, as in "**W**rite". You exit with CTRL-X, as in "e**X**it". 
 
 Sometimes we actually need to use nano when we want to edit a file that requires special permissions (sudo), as not all visual text editors on linux actually allow you to open them in sudo.
 
 ### sudo:
-If you put `sudo` in front of a command, that command will be run with administrator priveleges - bassicly letting you do almost whatever you want. Use sudo, do not be afraid of sudo, but use it with caution - if a command requires you to use sudo, do consider that it might (or might very well not!) have significant effects on your system!
+If you put `sudo` in front of a command, that command will be run with administrator priveleges - bassicly letting you do almost whatever you want. Use sudo, do not be afraid of sudo, but use sudo it with caution - if a command requires you to use sudo, do consider that it might (or might very well not!) have significant effects on your system!
 
-Editing files outside of your home directory usually require sudo rights. Installing programs ocasionally requires sudo rights.
+Editing files outside of your home directory usually requires sudo rights. Installing programs ocasionally requires sudo rights.
 
 ```BASH
 # go into root directory. We shouldn't normally make files or folders here
@@ -227,12 +229,23 @@ Editing files outside of your home directory usually require sudo rights. Instal
 touch: cannot touch 'my_butt': Permission denied
 > sudo touch my_butt
 
-# we've succesfully created the file! use nano to edit it:
+# we've succesfully touched the butt (that is ... created the file!)
+# use nano to edit it:
 > sudo nano my_butt
 ```
 
 ### history
 History lists the last 500 commands you used. Can be great if you've forgotten how to do something you know you did earlier!
+
+Personally, i've changed settings so that history stores not just the last 500 commands, but the last 5 thousand commands. Doing so is a little funky to do, as it requires us to understand "environment variables". To oversimplify, environment variables are little pieces of information you can read and/or write to, that different programs may react to in various ways. Its essentially one mechanism programs use to share information with each other, and allow the user to set permanent settings.
+
+The amount of commands in your history is controlled with thie `HISTSIZE` variable. You can read this with `echo $HISTSIZE`. You can change it to, for example, 1000, by executing `HISTSIZE=1000` inside your terminal. The change will not be permanent, however! Open a new terminal, and `HISTSIZE` will once again be 500...
+
+To set a variable permanetly, we do something a little strange. We write it in our so-called `.basrc` file! `.bashrc` is a small little script that runs every time you open the terminal. It just executes some commands right when you open the terminal! Since we want every terminal to have `HISTSIZE` equal 20000, our `.bashrc` should include:
+```BASH
+HISTSIZE=20000
+```
+Then any time you open a terminal, the first thing it will do is to set the history size to 20000, achieving exactly the effect we want!
 
 ### man
 To see the manual page for a specific command, use `man`. For example, to view the manual page for nano, i can write `man nano`. This will bring up an interactive reader (in the terminal of course) with information about nano.

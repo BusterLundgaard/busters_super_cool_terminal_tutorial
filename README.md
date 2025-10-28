@@ -251,7 +251,9 @@ History lists the last 500 commands you used. Can be great if you've forgotten h
 ... a whole bunch more
 ```
 
-Personally, i've changed settings so that history stores not just the last 500 commands, but the last 20 thousand commands. Doing so is a little funky to do, as it requires us to understand "environment variables". To oversimplify, environment variables are little pieces of information you can read and/or write to, that different programs may react to in various ways. Its essentially one mechanism programs use to share information with each other, and allow the user to set permanent settings.
+Personally, i've changed settings so that history stores not just the last 500 commands, but the last 20 thousand commands. Doing so is a little funky to do, as it requires us to understand **environment variables**.
+
+To oversimplify, environment variables are little pieces of information you can read and/or write to, that different programs may react to in various ways. Its essentially one mechanism programs use to share information with each other, and allow the user to set permanent settings.
 
 The amount of commands in your history is controlled with thie `HISTSIZE` variable. You can read this with `echo $HISTSIZE`. You can change it to, for example, 1000, by executing `HISTSIZE=1000` inside your terminal. The change will not be permanent, however! Open a new terminal, and `HISTSIZE` will once again be 500...
 

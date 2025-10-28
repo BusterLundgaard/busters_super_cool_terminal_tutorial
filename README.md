@@ -293,7 +293,7 @@ Echo is an odd command that you encounter surprisingly often. It simply repeats 
 > echo hello there stranger!
 hello there stranger
 ```
-`echo` can be useful when scripting, debugging, and when piping into other commands.
+`echo` can be useful when scripting, debugging, and when piping into other commands (but you haven't learned about piping yet hehe).
 
 # Important keyboard shortcuts in the terminal:
 ## TAB

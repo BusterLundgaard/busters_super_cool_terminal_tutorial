@@ -14,6 +14,9 @@ Change which directory you are at in the terminal
 > cd 
 # go to the previous directory you were just at:
 > cd -
+# go to previous-previous directory:
+> cd --
+# .. and --- for third previous, and so on ...
 ```
 
 ## Showing files and folders:

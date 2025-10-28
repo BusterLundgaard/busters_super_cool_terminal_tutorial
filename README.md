@@ -40,7 +40,7 @@ my_cool_file.txt
 - `ls --all`: List extra information about files!
 - `ls --l --human-readable`: List size information about files
 
-### cat
+### cat: print out a file
 `cat`, a program frequently ridiculed for its ridicilously unintuitive name, prints out the content of a file. Its called `cat` because it can also be used to concatenate files. So to show a file we ... concatenate it with nothing. Yes. 
 ```BASH
 # print out the contents of who_am_i.txt:
@@ -103,7 +103,7 @@ Like `tree`, find has the ability to list out _everything_ in a folder, but it l
 `find` can be used in more technical ways for searching, but we wont cover that here.
 
 ## Operations on files and folders:
-### touch
+### touch: create files.
 `touch` *creates files*. Think of a "magic _touch_" with the ability to make things appear out of thin air!
 
 ```BASH
@@ -122,8 +122,8 @@ my_other_cool_file.md
 > cat my_cool_file.txt
 ```
 
-### mkdir
-`mkdir` _m_a_k_es a _dir_ectory
+### mkdir: create folders
+`mkdir` **m**a**k**es a **dir**ectory
 ```BASH
 > ls
 work

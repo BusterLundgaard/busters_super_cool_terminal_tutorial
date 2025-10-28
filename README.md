@@ -136,7 +136,7 @@ stuff
 notes.txt
 ```
 
-### mv
+### mv: moving *and* renaming files!
 `mv` is used for *moving files and folders*, as well as for *renaming files*
 ```BASH
 > ls
